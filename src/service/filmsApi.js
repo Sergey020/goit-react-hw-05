@@ -1,15 +1,36 @@
 import axios from "axios";
 
+const API_KEY =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OWY3M2NmM2E2NzUxOTk0ZGJkMzRmNzBkNjdkYTAxZCIsInN1YiI6IjY2NzE4MjliZGVmZmM2NTBlOTgzZDBiNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8vCpsdeFJkln7fn48A4uMIGIafDsvaEF2hBwcWGuLAI";
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
+axios.defaults.headers.common["Authorization"] = `Bearer ${API_KEY}`;
 
-const url = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1';
-
-const options = {
-  headers: {
-	// Замість api_read_access_token вставте свій токен
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OWY3M2NmM2E2NzUxOTk0ZGJkMzRmNzBkNjdkYTAxZCIsInN1YiI6IjY2NzE4MjliZGVmZmM2NTBlOTgzZDBiNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8vCpsdeFJkln7fn48A4uMIGIafDsvaEF2hBwcWGuLAI'
-  }
+export const getTrendingMovies = async () => {
+  const { data } = await axios.get("/trending/movie/day");
+  return data;
 };
 
-axios.get(url, options)
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+export const searchMovies = async (query, page) => {
+  const { data } = await axios.get("/search/movie", {
+    params: {
+      query,
+      page,
+    },
+  });
+  return data.results;
+};
+
+export const getMovieDetails = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}`);
+  return data;
+};
+
+export const getMovieCast = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}/credits`);
+  return data.cast;
+};
+
+export const getMovieReviews = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}/reviews`);
+  return data.results;
+};
