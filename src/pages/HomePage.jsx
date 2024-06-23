@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getTrendingMovies } from "../service/filmsApi";
 import MovieList from "../components/MovieList/MovieList";
 import Loader from "../components/Loader/Loader";
+import toast from "react-hot-toast";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -26,7 +27,7 @@ const HomePage = () => {
   <div>
   <h1>Trending Movies</h1>
   {isLoading && <Loader/>}
-{error && alert("Can not br empty!")}
+{error && toast.error("Can not br empty!")}
 <MovieList movies={movies} />
   </div>
   );
