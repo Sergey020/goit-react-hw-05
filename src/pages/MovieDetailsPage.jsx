@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "../service/filmsApi";
 import Loader from "../components/Loader/Loader";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const MovieDetailsPage = () => {
@@ -28,7 +28,7 @@ const MovieDetailsPage = () => {
     };
     fetchMovieDetails();
   }, [movieId]);
-  console.log(movie);
+  // console.log(movie);
   return (
     <>
     <Link to ={linkBack}>Go back</Link>
@@ -61,6 +61,7 @@ const MovieDetailsPage = () => {
         <li><Link to='cast' state={{ from: linkBack }}>Cast</Link></li>
         <li><Link to ='reviews'state={{ from: linkBack }}>Reviews</Link></li>
       </ul>
+      <Outlet/>
     </>
   );
 };

@@ -1,6 +1,6 @@
 
 import Navigation from "./components/Navigation/Navigation";
-import { Outlet, Route, Routes } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
 import { Suspense, lazy } from "react";
@@ -23,7 +23,6 @@ function App() {
           </Route>
           <Route path="*" element={<NotFoundPage to="/" />} />
       </Routes>
-      <Outlet/>
       </Suspense>
     </>
   );
