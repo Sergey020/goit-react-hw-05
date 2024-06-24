@@ -28,7 +28,6 @@ try {
     };
     fetchCast()
   },[movieId]);
-  console.log(cast);
   return (
     <>
     {isLoading && <Loader />}
