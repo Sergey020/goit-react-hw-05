@@ -22,7 +22,7 @@ const MovieCast = () => {
       } catch (error) {
         setError(error);
       } finally {
-        setIsLoading(false); //dacac
+        setIsLoading(false);
       }
     };
     fetchCast();
