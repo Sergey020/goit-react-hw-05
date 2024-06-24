@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import toast from "react-hot-toast";
 import { getMovieCast } from "../../service/filmsApi";
-
+//nmnn
 const MovieCast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
