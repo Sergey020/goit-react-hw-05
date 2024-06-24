@@ -22,11 +22,12 @@ const MovieCast = () => {
       } catch (error) {
         setError(error);
       } finally {
-        setIsLoading(false);
+        setIsLoading(false); //dacac
       }
     };
     fetchCast();
   }, [movieId]);
+
   return (
     <>
       {isLoading && <Loader />}
