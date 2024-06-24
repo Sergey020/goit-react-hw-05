@@ -24,12 +24,12 @@ const HomePage = () => {
   }, []);
 
   return (
-  <div>
-  <h1>Trending Movies</h1>
-  {isLoading && <Loader/>}
-{error && toast.error("Can not br empty!")}
-<MovieList movies={movies} />
-  </div>
+    <div>
+      <h1>Trending Movies</h1>
+      {isLoading && <Loader />}
+      {error && toast.error("Can not br empty!")}
+      <MovieList movies={movies} />
+    </div>
   );
 };
 
