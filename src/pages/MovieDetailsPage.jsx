@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMovieDetails } from "../service/filmsApi";
 import Loader from "../components/Loader/Loader";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(null);
   const defaultImg =
     "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
-  const linkBack = location.state?.from ?? "/movies";
+  const linkBack = useRef(location.state?.from ?? "/movies");
   useEffect(() => {
     if (!movieId) return;
     const fetchMovieDetails = async () => {
@@ -31,7 +31,7 @@ const MovieDetailsPage = () => {
   // console.log(movie);
   return (
     <>
-      <Link to={linkBack}>Go back</Link>
+      <Link to={linkBack.current}>Go back</Link>
       {isLoading && <Loader />}
       {error && toast.error("Can not br empty!")}
       <h2>{movie.original_title}</h2>

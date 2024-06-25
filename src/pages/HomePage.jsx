@@ -16,18 +16,18 @@ const HomePage = () => {
         setMovies(results);
       } catch (error) {
         setError(error);
+        toast.error("Error fetching movies");
       } finally {
         setIsLoading(false);
       }
     };
     fetchTrendingMovies();
   }, []);
-
   return (
     <div>
       <h1>Trending Movies</h1>
       {isLoading && <Loader />}
-      {error && toast.error("Can not br empty!")}
+      {error && toast.error("Something went wrong")}
       <MovieList movies={movies} />
     </div>
   );

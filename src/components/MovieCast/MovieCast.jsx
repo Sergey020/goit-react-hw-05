@@ -21,6 +21,7 @@ const MovieCast = () => {
         setCast(movieCast);
       } catch (error) {
         setError(error);
+        toast.error("No cast information available.");
       } finally {
         setIsLoading(false);
       }
@@ -31,7 +32,7 @@ const MovieCast = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error && toast.error("Can not be empty!")}
+      {error && toast.error("Error fetching cast.")}
 
       <ul>
         {cast.map((actor) => (
